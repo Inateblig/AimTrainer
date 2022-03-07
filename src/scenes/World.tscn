@@ -35,7 +35,6 @@ transform = Transform( -0.152748, 0.000661639, 0.988265, 0.07828, 0.996866, 0.01
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 
 [node name="HUD" type="VBoxContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -53,26 +52,26 @@ margin_bottom = 80.0
 alignment = 1
 
 [node name="Accuracy" type="Label" parent="HUD/HBoxContainer"]
-margin_left = 376.0
-margin_right = 501.0
+margin_left = 235.0
+margin_right = 369.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 5 )
-text = "Acc: 0%"
+text = "Acc: 0% "
 valign = 1
 
-[node name="Space" type="Label" parent="HUD/HBoxContainer"]
-margin_left = 505.0
-margin_top = 12.0
-margin_right = 517.0
-margin_bottom = 26.0
-text = "   "
-
 [node name="Score" type="Label" parent="HUD/HBoxContainer"]
-margin_left = 521.0
-margin_right = 648.0
+margin_left = 373.0
+margin_right = 509.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 5 )
-text = "Score: 0"
+text = "Score: 0 "
+
+[node name="acct" type="Label" parent="HUD/HBoxContainer"]
+margin_left = 513.0
+margin_right = 788.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 5 )
+text = "TotalTimePlayed:"
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, -5.41301e-08, 0.785252, 0.619176, 6.86489e-08, 0.619176, -0.785252, 0, 8.71141, 0 )

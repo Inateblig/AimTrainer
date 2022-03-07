@@ -3,6 +3,9 @@ extends Spatial
 var score: float = 0.0
 var tries: float = 0.0
 var time: float = 0.001
+var acct: float = 0.0
+var save_path = "user://save.dat"
+var file = File.new()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -26,7 +29,14 @@ func _physics_process(delta):
 		time += delta
 	#HUD
 	$HUD/FPS.set_text("fps: " + str(Engine.get_frames_per_second()))
-	$HUD/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0))
+	$HUD/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0) + " ")
+	#acct
+	save_time_to_file(delta)
+	var acct = load_time_from_file()
+	var accts = int(acct) % 60
+	var acctm = int(acct / 60)
+	var accth = int(acct / 3600)
+	$HUD/HBoxContainer/acct.set_text("TotalTimePlayed: " + str(accth) + "h " + str(acctm) + "m " + str(accts) + "s")
 
 func _on_Target_hit():
 	if !Globals.pause:
@@ -37,10 +47,24 @@ func _on_Player_fire():
 
 func fire():
 	tries += 1.0
-	$HUD/HBoxContainer/Accuracy.set_text("Acc: " + str(score / tries * 100).pad_decimals(2) + "%")
+	$HUD/HBoxContainer/Accuracy.set_text("Acc: " + str(score / tries * 100).pad_decimals(2) + "% ")
 
 func visibility_hud(on):
 	$HUD.visible = on
 
 func visibility_menu(on):
 	$GUI/VBoxContainer.visible = on
+
+func save_time_to_file(delta):
+	var acct = load_time_from_file()
+	acct += delta
+	if file.open(save_path, File.WRITE) == OK:
+		file.store_float(acct)
+		file.close()
+
+func load_time_from_file():
+	if file.file_exists(save_path): 
+		if file.open(save_path, File.READ) == OK:
+			var acct = file.get_float()
+			file.close()
+			return acct
