@@ -57,6 +57,8 @@ func visibility_menu(on):
 
 func save_time_to_file(delta):
 	var acct = load_time_from_file()
+	if acct == null:
+		acct = 0.0
 	acct += delta
 	if file.open(save_path, File.WRITE) == OK:
 		file.store_float(acct)
