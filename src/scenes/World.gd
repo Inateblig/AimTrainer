@@ -1,6 +1,6 @@
 extends Spatial
 
-var score: float = 0.0
+var score: float = 1.0
 var tries: float = 0.0
 var time: float = 0.001
 var acct: float = 0.0
