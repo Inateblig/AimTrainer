@@ -5,17 +5,20 @@ signal hit
 export var health = 100
 var size: Vector3 = self.scale
 var phealth = 100
+var healthchanged: bool = false
 onready var sizex: float = $MeshInstance.scale.x
 
 func _ready():
 	randomize()
 
 func _process(_delta):
-	self.scale = size * Globals.size / 100
+	if !healthchanged:
+		self.scale = size * Globals.size / 100
 	if health < phealth:
 		emit_signal("hit")
 		if health > 25:
 			self.scale = self.scale * health / 100
+			healthchanged = true
 	if health <= 0:
 		respawn()
 	phealth = health
