@@ -1,0 +1,163 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/fonts/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/GUI.gd" type="Script" id=2]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="FOV" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="VBoxContainer/FOV"]
+margin_right = 84.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "FOV: "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/FOV"]
+margin_left = 88.0
+margin_right = 984.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 80.0
+max_value = 150.0
+value = 80.0
+tick_count = 2
+
+[node name="Laser" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 42.0
+margin_right = 984.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Laser"]
+margin_right = 249.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "LaserModel: Off"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Laser"]
+margin_left = 253.0
+margin_right = 277.0
+margin_bottom = 38.0
+
+[node name="RandRange" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 984.0
+margin_bottom = 122.0
+
+[node name="X" type="Label" parent="VBoxContainer/RandRange"]
+margin_right = 51.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "X: 1"
+
+[node name="XSlider" type="HSlider" parent="VBoxContainer/RandRange"]
+margin_left = 55.0
+margin_right = 326.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 2.0
+max_value = 80.0
+step = 2.0
+value = 20.0
+
+[node name="Y" type="Label" parent="VBoxContainer/RandRange"]
+margin_left = 330.0
+margin_right = 380.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "Y: 1"
+
+[node name="YSlider" type="HSlider" parent="VBoxContainer/RandRange"]
+margin_left = 384.0
+margin_right = 655.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 40.0
+value = 10.0
+
+[node name="Z" type="Label" parent="VBoxContainer/RandRange"]
+margin_left = 659.0
+margin_right = 708.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "Z: 1"
+
+[node name="ZSlider" type="HSlider" parent="VBoxContainer/RandRange"]
+margin_left = 712.0
+margin_right = 984.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 15.0
+
+[node name="Dmg" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 126.0
+margin_right = 984.0
+margin_bottom = 164.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Dmg"]
+margin_right = 94.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "Dmg: "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Dmg"]
+margin_left = 98.0
+margin_right = 984.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="Size" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 984.0
+margin_bottom = 206.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Size"]
+margin_right = 81.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "Size: "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Size"]
+margin_left = 85.0
+margin_right = 984.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 30.0
+max_value = 300.0
+value = 100.0
+
+[node name="Tee" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 210.0
+margin_right = 984.0
+margin_bottom = 248.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Tee"]
+margin_right = 221.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "TeeModel: Off"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Tee"]
+margin_left = 225.0
+margin_right = 249.0
+margin_bottom = 38.0
