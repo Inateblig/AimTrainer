@@ -6,3 +6,4 @@ var dmg: float = 100
 var laser: bool = false
 var fov: float = 80
 var size: float = 100
+var tee: bool = false

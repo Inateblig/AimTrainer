@@ -19,6 +19,11 @@ func _process(_delta):
 	if health <= 0:
 		respawn()
 	phealth = health
+#wether to show the tee model
+	if Globals.tee:
+		tee(true)
+	else:
+		tee(false)
 
 func respawn():
 	var rx = randi() % int(Globals.randrange.x) - Globals.randrange.x / 2
@@ -28,3 +33,7 @@ func respawn():
 	self.translation = rvec3
 	self.scale = size * Globals.size / 100
 	health = 100
+
+func tee(on):
+	$tee2.visible = on
+	$MeshInstance.visible = !on
