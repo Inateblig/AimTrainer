@@ -27,11 +27,11 @@ func _physics_process(delta):
 		visibility_hud(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		time += delta
+		save_time_to_file(delta)
 	#HUD
 	$HUD/FPS.set_text("fps: " + str(Engine.get_frames_per_second()))
 	$HUD/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0) + " ")
 	#acct
-	save_time_to_file(delta)
 	var acct = load_time_from_file()
 	var accts = int(acct) % 60
 	var acctm = int(acct / 60)
