@@ -28,16 +28,12 @@ func _physics_process(delta):
 	$HUD/FPS.set_text("fps: " + str(Engine.get_frames_per_second()))
 	$HUD/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0))
 
-
-
-
 func _on_Target_hit():
 	if !Globals.pause:
 		score += 1.0
 
 func _on_Player_fire():
 	fire()
-
 
 func fire():
 	tries += 1.0

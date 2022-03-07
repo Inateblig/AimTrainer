@@ -26,13 +26,10 @@ material/0 = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78092, -13.1422 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52615, -13.1422 )
 
 [node name="laserV2" parent="Player/Head/Camera" index="2"]
 transform = Transform( -0.152748, 0.000661639, 0.988265, 0.07828, 0.996866, 0.0114317, -0.98516, 0.0791075, -0.152321, 2.58131, -1.8865, -3.34928 )
-
-[node name="lasershot" parent="Player/Head/Camera/laserV2" index="13"]
-visible = true
 
 [node name="Target" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )

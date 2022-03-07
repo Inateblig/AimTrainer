@@ -20,40 +20,35 @@ var snap_vector: Vector3 = Vector3()
 func _ready():
 	$Head/Camera/laserV2/lasershot.visible = false
 
-
 func _input(event):
 	if event is InputEventMouseMotion and !Globals.pause:
 		rotate_y(deg2rad(-1 * event.relative.x) * MOUSE_SENS)
 		head.rotate_x(deg2rad(event.relative.y) * MOUSE_SENS)
 
-
-func _physics_process(delta):
-	input_move = get_input_direction() * MOVE_SPEED
+func _process(delta):
+	if !Globals.pause:
+		input_move = get_input_direction() * MOVE_SPEED
 	
-	if not is_on_floor():
-		gravity_local += GRAVITY_ACC * Vector3.DOWN * delta
-	else:
-		gravity_local = Vector3.ZERO
+		if not is_on_floor():
+			gravity_local += GRAVITY_ACC * Vector3.DOWN * delta
+		else:
+			gravity_local = Vector3.ZERO
 
-	snap_vector = Vector3.DOWN
-	if is_on_floor():
-		snap_vector = -get_floor_normal()
+		snap_vector = Vector3.DOWN
+		if is_on_floor():
+			snap_vector = -get_floor_normal()
 
-	if Input.is_action_just_pressed("jump") and jumps < MAX_JUMPS:
-		snap_vector = Vector3.ZERO
-		gravity_local = Vector3.UP * JUMP_FORCE
-		jumps += 1
-	if is_on_floor():
-		jumps = 1
-	move_and_slide_with_snap(input_move + gravity_local, snap_vector, Vector3.UP)
-	fire()
-	
+		if Input.is_action_just_pressed("jump") and jumps < MAX_JUMPS:
+			snap_vector = Vector3.ZERO
+			gravity_local = Vector3.UP * JUMP_FORCE
+			jumps += 1
+		if is_on_floor():
+			jumps = 1
+		move_and_slide_with_snap(input_move + gravity_local, snap_vector, Vector3.UP)
+		fire()
 	#GUI
 	$Head/Camera.fov = Globals.fov
 	$Head/Camera/laserV2.visible = Globals.laser
-
-
-
 
 func get_input_direction() -> Vector3:
 	var z: float = (
@@ -63,7 +58,6 @@ func get_input_direction() -> Vector3:
 		Input.get_action_strength("left") - Input.get_action_strength("right")
 	)
 	return transform.basis.xform(Vector3(x, 0, z).normalized())
-
 
 func fire():
 	if Input.is_action_just_pressed("fire") and !Globals.pause:
