@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/materials/grey.tres" type="Material" id=1]
 [ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/World.gd" type="Script" id=4]
 [ext_resource path="res://src/fonts/font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/scenes/GUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -36,25 +37,25 @@ visible = true
 [node name="Target" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HUD" type="VBoxContainer" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="FPS" type="Label" parent="VBoxContainer"]
+[node name="FPS" type="Label" parent="HUD"]
 margin_right = 1024.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 5 )
 text = "0"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 margin_top = 42.0
 margin_right = 1024.0
 margin_bottom = 80.0
 alignment = 1
 
-[node name="Accuracy" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Accuracy" type="Label" parent="HUD/HBoxContainer"]
 margin_left = 376.0
 margin_right = 501.0
 margin_bottom = 38.0
@@ -62,14 +63,14 @@ custom_fonts/font = ExtResource( 5 )
 text = "Acc: 0%"
 valign = 1
 
-[node name="Space" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Space" type="Label" parent="HUD/HBoxContainer"]
 margin_left = 505.0
 margin_top = 12.0
 margin_right = 517.0
 margin_bottom = 26.0
 text = "   "
 
-[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Score" type="Label" parent="HUD/HBoxContainer"]
 margin_left = 521.0
 margin_right = 648.0
 margin_bottom = 38.0
@@ -79,126 +80,7 @@ text = "Score: 0"
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, -5.41301e-08, 0.785252, 0.619176, 6.86489e-08, 0.619176, -0.785252, 0, 8.71141, 0 )
 
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
-
-[node name="FOV" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_right = 984.0
-margin_bottom = 38.0
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/FOV"]
-margin_right = 84.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "FOV: "
-
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/FOV"]
-margin_left = 88.0
-margin_right = 984.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 80.0
-max_value = 150.0
-value = 80.0
-tick_count = 2
-
-[node name="Laser" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 42.0
-margin_right = 984.0
-margin_bottom = 80.0
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/Laser"]
-margin_right = 246.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "LaserModel: On"
-
-[node name="CheckBox" type="CheckBox" parent="GUI/VBoxContainer/Laser"]
-margin_left = 250.0
-margin_right = 274.0
-margin_bottom = 38.0
-
-[node name="RandRange" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 84.0
-margin_right = 984.0
-margin_bottom = 122.0
-
-[node name="X" type="Label" parent="GUI/VBoxContainer/RandRange"]
-margin_right = 51.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "X: 1"
-
-[node name="XSlider" type="HSlider" parent="GUI/VBoxContainer/RandRange"]
-margin_left = 55.0
-margin_right = 326.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 2.0
-max_value = 80.0
-step = 2.0
-value = 20.0
-
-[node name="Y" type="Label" parent="GUI/VBoxContainer/RandRange"]
-margin_left = 330.0
-margin_right = 380.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "Y: 1"
-
-[node name="YSlider" type="HSlider" parent="GUI/VBoxContainer/RandRange"]
-margin_left = 384.0
-margin_right = 655.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 1.0
-max_value = 40.0
-value = 10.0
-
-[node name="Z" type="Label" parent="GUI/VBoxContainer/RandRange"]
-margin_left = 659.0
-margin_right = 708.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "Z: 1"
-
-[node name="ZSlider" type="HSlider" parent="GUI/VBoxContainer/RandRange"]
-margin_left = 712.0
-margin_right = 984.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 1.0
-value = 15.0
-
-[node name="Dmg" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 126.0
-margin_right = 984.0
-margin_bottom = 164.0
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/Dmg"]
-margin_right = 94.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 5 )
-text = "Dmg: "
-
-[node name="HSlider" type="HSlider" parent="GUI/VBoxContainer/Dmg"]
-margin_left = 98.0
-margin_right = 984.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 100.0
+[node name="GUI" parent="." instance=ExtResource( 6 )]
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="hit" from="Target" to="." method="_on_Target_hit"]

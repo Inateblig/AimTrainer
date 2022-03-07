@@ -25,25 +25,9 @@ func _physics_process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		time += delta
 	#HUD
-	$VBoxContainer/FPS.set_text("fps: " + str(Engine.get_frames_per_second()))
-	$VBoxContainer/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0))
-	#GUI
-	var fov: float = $GUI/VBoxContainer/FOV/HSlider.value
-	var laser: bool = $GUI/VBoxContainer/Laser/CheckBox.pressed
-	var xrange: float = $GUI/VBoxContainer/RandRange/XSlider.value
-	var yrange: float = $GUI/VBoxContainer/RandRange/YSlider.value
-	var zrange: float = $GUI/VBoxContainer/RandRange/ZSlider.value
-	var dmg: float = $GUI/VBoxContainer/Dmg/HSlider.value
-	$GUI/VBoxContainer/FOV/Label.set_text("FOV: " + str(fov))
-	$GUI/VBoxContainer/Laser/Label.set_text("LaserModel: " + str(laser))
-	$GUI/VBoxContainer/RandRange/X.set_text("X: " + str(xrange))
-	$GUI/VBoxContainer/RandRange/Y.set_text("Y: " + str(yrange))
-	$GUI/VBoxContainer/RandRange/Z.set_text("Z: " + str(zrange))
-	$GUI/VBoxContainer/Dmg/Label.set_text("Dmg: " + str(dmg))
-	$Player/Head/Camera.fov = fov
-	$Player/Head/Camera/laserV2.visible = laser
-	Globals.randrange = Vector3(xrange, yrange, zrange)
-	Globals.dmg = dmg
+	$HUD/FPS.set_text("fps: " + str(Engine.get_frames_per_second()))
+	$HUD/HBoxContainer/Score.set_text("Score: " + str(score / time * 100).pad_decimals(0))
+
 
 
 
@@ -57,10 +41,10 @@ func _on_Player_fire():
 
 func fire():
 	tries += 1.0
-	$VBoxContainer/HBoxContainer/Accuracy.set_text("Acc: " + str(score / tries * 100).pad_decimals(2) + "%")
+	$HUD/HBoxContainer/Accuracy.set_text("Acc: " + str(score / tries * 100).pad_decimals(2) + "%")
 
 func visibility_hud(on):
-	$VBoxContainer.visible = on
+	$HUD.visible = on
 
 func visibility_menu(on):
 	$GUI/VBoxContainer.visible = on

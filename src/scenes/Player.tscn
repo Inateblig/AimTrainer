@@ -80,7 +80,6 @@ transform = Transform( -0.01918, 0, 0.999816, 0, 1, 0, -0.999816, 0, -0.01918, 2
 
 [node name="lasershot" parent="Head/Camera/laserV2" instance=ExtResource( 4 )]
 transform = Transform( 0.999816, 0, -0.0191801, 0, 2.01097, 0, 0.0191802, 0, 0.999816, 10.5783, 0.300396, 0.155448 )
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Head/Camera/laserV2/lasershot")

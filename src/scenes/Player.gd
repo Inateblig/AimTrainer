@@ -18,7 +18,6 @@ var gravity_local: Vector3 = Vector3()
 var snap_vector: Vector3 = Vector3()
 
 func _ready():
-
 	$Head/Camera/laserV2/lasershot.visible = false
 
 
@@ -48,6 +47,11 @@ func _physics_process(delta):
 		jumps = 1
 	move_and_slide_with_snap(input_move + gravity_local, snap_vector, Vector3.UP)
 	fire()
+	
+	#GUI
+	$Head/Camera.fov = Globals.fov
+	$Head/Camera/laserV2.visible = Globals.laser
+
 
 
 
