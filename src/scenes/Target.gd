@@ -21,6 +21,7 @@ func _process(_delta):
 			healthchanged = true
 	if health <= 0:
 		respawn()
+		healthchanged = false
 	phealth = health
 #wether to show the tee model
 	if Globals.tee:
