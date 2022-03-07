@@ -37,7 +37,14 @@ func respawn():
 	self.translation = rvec3
 	self.scale = size * Globals.size / 100
 	health = 100
+	set_audio_file()
+	$AudioStreamPlayer3D.play()
 
 func tee(on):
 	$tee2.visible = on
 	$MeshInstance.visible = !on
+
+func set_audio_file():
+	var i = randi() % 7 + 1
+	var file = "res://src/assets/sounds/respawn/vo_teefault_spawn-0" + str(i) + ".ogg"
+	$AudioStreamPlayer3D.stream = load(file)

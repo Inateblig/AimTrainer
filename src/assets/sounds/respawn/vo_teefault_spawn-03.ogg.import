@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teefault_spawn-03.ogg-316c9cdc4eb39dc7fc02ebbf2fafaf96.oggstr"
+
+[deps]
+
+source_file="res://src/assets/sounds/respawn/vo_teefault_spawn-03.ogg"
+dest_files=[ "res://.import/vo_teefault_spawn-03.ogg-316c9cdc4eb39dc7fc02ebbf2fafaf96.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
