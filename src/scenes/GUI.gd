@@ -1,6 +1,24 @@
 extends CanvasLayer
 
+var zoom_val: int = 50
+var prev_fov: float = 80
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == BUTTON_WHEEL_UP:
+				$VBoxContainer/FOV/HSlider.value -= 2
+			elif event.button_index == BUTTON_WHEEL_DOWN:
+				$VBoxContainer/FOV/HSlider.value += 2
+
+
 func _process(_delta):
+	#zoom
+	if Input.is_action_just_pressed("zoom_in"):
+		prev_fov = Globals.fov
+		$VBoxContainer/FOV/HSlider.value =  Globals.fov - zoom_val
+	elif Input.is_action_just_released("zoom_in"):
+		$VBoxContainer/FOV/HSlider.value = prev_fov
 	#GUI
 	var fov: float = $VBoxContainer/FOV/HSlider.value
 	var laser: bool = $VBoxContainer/Laser/CheckBox.pressed
