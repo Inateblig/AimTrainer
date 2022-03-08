@@ -66,10 +66,11 @@ func save_time_to_file(delta):
 		file.close()
 
 func initialize_file():
-	var acct = 0.0
-	if file.open(save_path, File.WRITE) == OK:
-		file.store_float(acct)
-		file.close()
+	if !file.file_exists(save_path):
+		var acct = 0.0
+		if file.open(save_path, File.WRITE) == OK:
+			file.store_float(acct)
+			file.close()
 
 func load_time_from_file():
 	if file.file_exists(save_path): 
