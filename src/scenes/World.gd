@@ -61,18 +61,19 @@ func save_time_to_file(delta):
 		acct = 0.0
 	acct += delta
 	if file.open(save_path, File.WRITE) == OK:
-		file.store_float(acct)
+		file.store_string(str(acct))
 		file.close()
 
 func load_time_from_file():
 	if file.file_exists(save_path): 
 		if file.open(save_path, File.READ) == OK:
-			var acct = file.get_float()
+			var acct = file.get_line()
 			file.close()
-			return acct
+			return float(acct)
 	elif !file.file_exists(save_path):
 		var acct = 0.0
 		if file.open(save_path, File.WRITE) == OK:
-			file.store_float(acct)
+			file.store_string(str(acct))
 			file.close()
 			return acct
+	return 0.0
