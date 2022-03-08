@@ -8,7 +8,6 @@ var save_path = "user://save.dat"
 var file = File.new()
 
 func _ready():
-	initialize_file()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
@@ -65,16 +64,15 @@ func save_time_to_file(delta):
 		file.store_float(acct)
 		file.close()
 
-func initialize_file():
-	if !file.file_exists(save_path):
-		var acct = 0.0
-		if file.open(save_path, File.WRITE) == OK:
-			file.store_float(acct)
-			file.close()
-
 func load_time_from_file():
 	if file.file_exists(save_path): 
 		if file.open(save_path, File.READ) == OK:
 			var acct = file.get_float()
+			file.close()
+			return acct
+	elif !file.file_exists(save_path):
+		var acct = 0.0
+		if file.open(save_path, File.WRITE) == OK:
+			file.store_float(acct)
 			file.close()
 			return acct
