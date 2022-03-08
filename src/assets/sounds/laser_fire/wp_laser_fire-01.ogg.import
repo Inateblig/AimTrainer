@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wp_laser_fire-01.ogg-cde5266fd2b289138bfab05d2c936374.oggstr"
+
+[deps]
+
+source_file="res://src/assets/sounds/laser_fire/wp_laser_fire-01.ogg"
+dest_files=[ "res://.import/wp_laser_fire-01.ogg-cde5266fd2b289138bfab05d2c936374.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

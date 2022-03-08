@@ -17,6 +17,8 @@ var input_move: Vector3 = Vector3()
 var gravity_local: Vector3 = Vector3()
 var snap_vector: Vector3 = Vector3()
 
+var soundfilepath = "res://src/assets/sounds/laser_fire/wp_laser_fire-0"
+
 func _ready():
 	$Head/Camera/laserV2/lasershot.visible = false
 
@@ -63,6 +65,9 @@ func fire():
 	if Input.is_action_just_pressed("fire") and !Globals.pause:
 		emit_signal("fire")
 		$AnimationPlayer.play("fire")
+		$Head/Camera/AudioStreamPlayer3D.stream\
+			= load(Globals.set_audio_file(soundfilepath, 3))
+		$Head/Camera/AudioStreamPlayer3D.play()
 		if raycast.is_colliding():
 			var target = raycast.get_collider()
 			if target.is_in_group("target"):
