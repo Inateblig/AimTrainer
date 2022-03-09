@@ -1,6 +1,7 @@
 extends KinematicBody
 
 signal fire
+signal hit
 
 const MOUSE_SENS: float = 0.005
 const MOVE_SPEED: float = 10.0
@@ -58,7 +59,6 @@ func get_input_direction() -> Vector3:
 	return transform.basis.xform(Vector3(x, 0, z).normalized())
 
 func fire():
-		emit_signal("fire")
 		$AnimationPlayer.play("fire")
 		$Head/Camera/AudioStreamPlayer3D.stream\
 			= load(Globals.set_audio_file(soundfilepath, 3))
@@ -68,3 +68,5 @@ func fire():
 			if target.is_in_group("target"):
 				target.health -= Globals.dmg
 				target.healthchanged = true
+				emit_signal("hit")
+		emit_signal("fire")
