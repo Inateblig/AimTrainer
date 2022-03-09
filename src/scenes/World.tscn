@@ -79,6 +79,6 @@ transform = Transform( -1, 0, -8.74228e-08, -5.41301e-08, 0.785252, 0.619176, 6.
 [node name="GUI" parent="." instance=ExtResource( 6 )]
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
-[connection signal="hit" from="Target" to="." method="_on_Target_hit"]
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 
 [editable path="Player"]

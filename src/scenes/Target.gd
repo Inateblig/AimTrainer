@@ -1,7 +1,5 @@
 extends KinematicBody
 
-signal hit
-
 var health = 100
 var psize = Globals.size
 var healthchanged: bool = false
@@ -14,7 +12,6 @@ func _process(_delta):
 	if psize != Globals.size:
 		update_size()
 	if healthchanged:
-		emit_signal("hit")
 		healthchanged = false
 		if health > 25:
 			update_size()
