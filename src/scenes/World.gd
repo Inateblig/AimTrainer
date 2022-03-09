@@ -36,18 +36,17 @@ func _physics_process(delta):
 	var accts = int(acct) % 60
 	var acctm = int(acct / 60)
 	var accth = int(acct / 3600)
-	$HUD/HBoxContainer/acct.set_text("TotalTimePlayed: " + str(accth) + "h " + str(acctm) + "m " + str(accts) + "s")
+	$HUD/HBoxContainer/acct.set_text\
+		("TotalTimePlayed: " + str(accth) + "h " + str(acctm) + "m " + str(accts) + "s")
 
 func _on_Target_hit():
 	if !Globals.pause:
 		score += 1.0
 
 func _on_Player_fire():
-	fire()
-
-func fire():
 	tries += 1.0
-	$HUD/HBoxContainer/Accuracy.set_text("Acc: " + str(score / tries * 100).pad_decimals(2) + "% ")
+	$HUD/HBoxContainer/Accuracy.set_text\
+		("Acc: " + str(score / tries * 100).pad_decimals(2) + "% ")
 
 func visibility_hud(on):
 	$HUD.visible = on
