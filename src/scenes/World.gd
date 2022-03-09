@@ -37,7 +37,6 @@ func _physics_process(delta):
 
 func _on_Player_hit():
 	hits += 1
-	print(hits)
 
 func _on_Player_fire():
 	tries += 1
@@ -59,7 +58,6 @@ func visibility_hud_and_menu(on):
 func save_time_to_file():
 	var file = File.new()
 	if file.open(save_path, File.WRITE) == OK:
-		print(acct)
 		file.store_string(str(acct))
 		file.close()
 
