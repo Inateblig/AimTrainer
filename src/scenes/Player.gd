@@ -52,6 +52,8 @@ func _process(delta):
 	$Head/Camera.fov = Globals.fov
 	$Head/Camera/laserV2.visible = Globals.laser
 
+	Globals.player_pos = $CollisionShape/MeshInstance.global_transform.origin
+
 func get_input_direction() -> Vector3:
 	var z: float = (
 		Input.get_action_strength("fwd") - Input.get_action_strength("bwd")

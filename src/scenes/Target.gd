@@ -14,7 +14,7 @@ func _ready():
 
 func _process(_delta):
 	if !healthchanged:
-		self.scale = size * Globals.size / 100
+		update_size()
 	if health < phealth:
 		emit_signal("hit")
 		if health > 25:
@@ -24,23 +24,36 @@ func _process(_delta):
 		respawn()
 		healthchanged = false
 	phealth = health
-#wether to show the tee model
-	if Globals.tee:
-		tee(true)
-	else:
-		tee(false)
+	# whether to show the tee model
+	tee(Globals.tee)
 
 func respawn():
+	health = 100
+	var tries = 0
+	while true:
+		var target_pos = random_pos()
+		print("printoif")
+		if (Globals.player_pos - target_pos).length() > 5:
+			self.translation = target_pos
+			break
+		tries += 1
+		if tries >= 4:
+			print("gtfo")
+			break
+	update_size()
+	$AudioStreamPlayer3D.stream\
+	= load(Globals.set_audio_file(soundfilepath, 7))
+	$AudioStreamPlayer3D.play()
+
+func random_pos():
 	var rx = randi() % int(Globals.randrange.x) - Globals.randrange.x / 2
 	var ry = randi() % int(Globals.randrange.y)
 	var rz = randi() % int(Globals.randrange.z)
 	var rvec3 = Vector3(rx , ry + 1.5 + Globals.size / 100, rz)
-	self.translation = rvec3
+	return rvec3
+
+func update_size():
 	self.scale = size * Globals.size / 100
-	health = 100
-	$AudioStreamPlayer3D.stream\
-	= load(Globals.set_audio_file(soundfilepath, 7))
-	$AudioStreamPlayer3D.play()
 
 func tee(on):
 	$tee2.visible = on

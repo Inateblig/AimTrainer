@@ -13,12 +13,7 @@ func _input(event):
 
 
 func _process(_delta):
-	#zoom
-	if Input.is_action_just_pressed("zoom_in"):
-		prev_fov = Globals.fov
-		$VBoxContainer/FOV/HSlider.value =  Globals.fov - zoom_val
-	elif Input.is_action_just_released("zoom_in"):
-		$VBoxContainer/FOV/HSlider.value = prev_fov
+	zoom()
 	#GUI
 	var fov: float = $VBoxContainer/FOV/HSlider.value
 	var laser: bool = $VBoxContainer/Laser/CheckBox.pressed
@@ -42,3 +37,10 @@ func _process(_delta):
 	Globals.dmg = dmg
 	Globals.size = size
 	Globals.tee = tee
+
+func zoom():
+	if Input.is_action_just_pressed("zoom_in"):
+		prev_fov = Globals.fov
+		$VBoxContainer/FOV/HSlider.value =  Globals.fov - zoom_val
+	elif Input.is_action_just_released("zoom_in"):
+		$VBoxContainer/FOV/HSlider.value = prev_fov
