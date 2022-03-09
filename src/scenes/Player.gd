@@ -74,3 +74,4 @@ func fire():
 			var target = raycast.get_collider()
 			if target.is_in_group("target"):
 				target.health -= Globals.dmg
+				target.healthchanged = true
