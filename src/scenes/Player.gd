@@ -25,7 +25,7 @@ func _input(event):
 		self.rotate_y((-event.relative.x) * MOUSE_SENS)
 		head.rotate_x((event.relative.y) * MOUSE_SENS)
 
-func _process(delta):
+func _physics_process(delta):
 	if !Globals.pause:
 		input_move = get_input_direction() * MOVE_SPEED
 	

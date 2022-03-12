@@ -9,6 +9,7 @@
 [sub_resource type="SphereShape" id=2]
 
 [node name="Target" type="KinematicBody" groups=["target"]]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

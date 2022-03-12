@@ -76,7 +76,7 @@ texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="laserV2" parent="Head/Camera" instance=ExtResource( 3 )]
-transform = Transform( -0.01918, 0, 0.999816, 0, 1, 0, -0.999816, 0, -0.01918, 2.58131, -1.8865, -3.34928 )
+transform = Transform( -0.109414, 0.00114187, 0.993996, 0.0766822, 0.997029, 0.00729541, -0.991034, 0.07702, -0.109176, 1.81676, -1.8865, -3.34928 )
 
 [node name="lasershot" parent="Head/Camera/laserV2" instance=ExtResource( 4 )]
 transform = Transform( 0.999816, 0, -0.0191801, 0, 2.01097, 0, 0.0191802, 0, 0.999816, 10.5783, 0.300396, 0.155448 )

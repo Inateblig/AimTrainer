@@ -14,7 +14,7 @@ func _notification(what):
 		save_time_to_file()
 		get_tree().quit()
 
-func _physics_process(delta):
+func _process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	# pause logic
