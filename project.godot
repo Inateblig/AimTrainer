@@ -21,11 +21,14 @@ Globals="*res://src/scenes/Globals.gd"
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/vsync/use_vsync=false
 
 [global]
 
 release=false
+msaaa=false
 
 [input]
 
@@ -81,4 +84,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
+quality/filters/msaa=3
 environment/default_environment="res://src/assets/laser/default_env.tres"

@@ -5,16 +5,25 @@ var tries: int = 0
 var time: float = 0.0
 var acct: float = 0.0
 var save_path = "user://save.dat"
+var target = preload("res://src/scenes/Target.tscn")
+var pvalue = Globals.ntargets
+
+func _init():
+	randomize()
 
 func _ready():
 	acct = load_time_from_file()
+	get_node("GUI/VBoxContainer/NTargets/HSlider").connect("value_changed", self, "_on_HSlider_value_changed")
+	for _i in range(pvalue):
+		self.add_child(target.instance())
+		
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save_time_to_file()
 		get_tree().quit()
 
-func _process(delta):
+func _process(delta): 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	# pause logic
@@ -69,3 +78,24 @@ func load_time_from_file():
 			file.close()
 			return float(acct)
 	return 0.0
+
+func spawn_target(n):
+	for _i in range(n):
+		self.add_child(target.instance())
+
+func remove_target(n):
+	var i = 0
+	for c in get_children():
+		if c.is_in_group("target"):
+			remove_child(c)
+			i+=1
+			if i == n:
+				return
+
+
+func _on_HSlider_value_changed(value):
+	if value > pvalue:
+		spawn_target(value - pvalue)
+	else:
+		remove_target(pvalue - value)
+	pvalue = value
