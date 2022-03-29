@@ -45,7 +45,7 @@ func _physics_process(delta):
 			fire()
 	# GUI
 	$Head/Camera.fov = Globals.fov
-	$Head/Camera/laserV2.visible = Globals.laser
+	$ViewportContainer/Viewport/laserV2.visible = Globals.laser
 	# get player_pos
 	Globals.player_pos = $CollisionShape/MeshInstance.global_transform.origin
 
