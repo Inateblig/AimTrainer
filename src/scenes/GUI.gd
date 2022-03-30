@@ -24,6 +24,7 @@ func _process(_delta):
 	var size: float = $VBoxContainer/Size/HSlider.value
 	var tee: bool = $VBoxContainer/Tee/CheckBox.pressed
 	var ntargets: int = $VBoxContainer/NTargets/HSlider.value
+	var tartimeout: float = $VBoxContainer/TarTimeout/HSlider.value
 	$VBoxContainer/FOV/Label.set_text("FOV: " + str(fov))
 	$VBoxContainer/Laser/Label.set_text("LaserModel: " + str(laser))
 	$VBoxContainer/RandRange/X.set_text("X: " + str(xrange))
@@ -33,6 +34,7 @@ func _process(_delta):
 	$VBoxContainer/Size/Label.set_text("Size: " + str(size))
 	$VBoxContainer/Tee/Label.set_text("TeeModel: " + str(tee))
 	$VBoxContainer/NTargets/Label.set_text("NumberOfTargets: " + str(ntargets))
+	$VBoxContainer/TarTimeout/Label.set_text("TargetTimeout: " + str(tartimeout))
 	Globals.fov = fov
 	Globals.laser = laser
 	Globals.randrange = Vector3(xrange, yrange, zrange)
@@ -40,6 +42,7 @@ func _process(_delta):
 	Globals.size = size
 	Globals.tee = tee
 	Globals.ntargets = ntargets
+	Globals.tartimeout = tartimeout
 
 func zoom():
 	if Input.is_action_just_pressed("zoom_in"):

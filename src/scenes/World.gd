@@ -25,6 +25,7 @@ func _notification(what):
 
 func _process(delta): 
 	if Input.is_action_just_pressed("restart"):
+		save_time_to_file()
 		get_tree().reload_current_scene()
 	# pause logic
 	Globals.pause = Input.is_action_just_pressed("pause") != Globals.pause
@@ -61,8 +62,10 @@ func visibility_hud_and_menu(on):
 	$GUI/VBoxContainer.visible = !on
 	if !on:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pause_targets(true)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		pause_targets(false)
 
 func save_time_to_file():
 	var file = File.new()
@@ -91,6 +94,14 @@ func remove_target(n):
 			i+=1
 			if i == n:
 				return
+
+func pause_targets(on):
+		for c in get_children():
+			if c.is_in_group("target"):
+				if on:
+					c.get_node("Timer").stop()
+				else:
+					c.get_node("Timer").start()
 
 
 func _on_HSlider_value_changed(value):

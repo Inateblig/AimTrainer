@@ -142,7 +142,7 @@ margin_right = 1880.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-min_value = 30.0
+min_value = 10.0
 max_value = 300.0
 value = 100.0
 
@@ -180,5 +180,27 @@ margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 1.0
-max_value = 10.0
+max_value = 20.0
+value = 1.0
+
+[node name="TarTimeout" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 294.0
+margin_right = 1880.0
+margin_bottom = 332.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TarTimeout"]
+margin_right = 262.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "TargetTimeout:  "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TarTimeout"]
+margin_left = 266.0
+margin_right = 1880.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 20.0
+step = 0.1
 value = 1.0

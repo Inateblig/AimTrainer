@@ -3,11 +3,13 @@ extends KinematicBody
 var health = 100
 var psize = Globals.size
 var healthchanged: bool = false
-var soundfilepath = "res://src/assets/sounds/respawn/vo_teefault_spawn-0"
+var spawnsoundfilepath = "res://src/assets/sounds/respawn/vo_teefault_spawn-0"
+var hitsoundfilepath = "res://src/assets/sounds/laser_hit/sfx_hit_weak-0"
 var target2close = false
+var tartimeout = false
 
 func _ready():
-	respawn(false)
+	respawn(false, false)
 
 func _process(_delta):
 	if psize != Globals.size:
@@ -17,11 +19,17 @@ func _process(_delta):
 		if health > 25:
 			update_size()
 		elif health <= 0:
-			respawn(true)
+			$HitAudioStreamPlayer3D.stream\
+			= load(Globals.set_audio_file(hitsoundfilepath, 3))
+			$HitAudioStreamPlayer3D.play()
+			respawn(true, true)
+	if tartimeout:
+		tartimeout = false
+		respawn(true, true)
 	psize = Globals.size
 	is_tee_visible(Globals.tee)
 
-func respawn(sound):
+func respawn(sound, timer):
 	health = 100
 	var tries = 0
 	while true:
@@ -35,8 +43,10 @@ func respawn(sound):
 	update_size()
 	if sound:
 		$AudioStreamPlayer3D.stream\
-			= load(Globals.set_audio_file(soundfilepath, 7))
+			= load(Globals.set_audio_file(spawnsoundfilepath, 7))
 		$AudioStreamPlayer3D.play()
+	if timer:
+		$Timer.start(Globals.tartimeout)
 
 func random_pos() -> Vector3:
 	var rx = randi() % int(Globals.randrange.x) - Globals.randrange.x / 2
@@ -60,3 +70,8 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body != self && body.is_in_group("target"):
 		target2close = false
+
+
+func _on_Timer_timeout():
+	tartimeout = true
+
