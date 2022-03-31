@@ -1,6 +1,7 @@
 # AimTrainer
 AimTrainer is an fps aim trainer made in godot with GDScript.
 MIT Licence.
+The sound effects are from teeworlds.
 
 credits to these videos;
 
