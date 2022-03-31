@@ -3,7 +3,7 @@ extends KinematicBody
 signal fire
 signal hit
 
-const MOUSE_SENS: float = 0.005
+var mouse_sens: float = 0.005 * Globals.mousesens
 const MOVE_SPEED: float = 10.0
 const GRAVITY_ACC: float = 9.8 * 3
 const JUMP_FORCE: float = 10.0
@@ -23,8 +23,11 @@ var firesoundfilepath = "res://src/assets/sounds/laser_fire/wp_laser_fire-0"
 
 func _input(event):
 	if event is InputEventMouseMotion and !Globals.pause:
-		self.rotate_y((-event.relative.x) * MOUSE_SENS)
-		head.rotate_x((event.relative.y) * MOUSE_SENS)
+		self.rotate_y((-event.relative.x) * mouse_sens)
+		head.rotate_x((event.relative.y) * mouse_sens)
+
+func _process(delta):
+	mouse_sens = 0.005 * Globals.mousesens
 
 func _physics_process(delta):
 	if !Globals.pause:

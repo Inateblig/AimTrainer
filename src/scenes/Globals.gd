@@ -10,6 +10,7 @@ var tee: bool = false
 var player_pos: Vector3 = Vector3.ZERO
 var ntargets: int = 1
 var tartimeout: float = 0.5
+var mousesens: float = 1
 
 func set_audio_file(filepath, files):
 	var i = randi() % files + 1

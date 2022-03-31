@@ -205,10 +205,31 @@ max_value = 20.0
 step = 0.1
 value = 1.0
 
-[node name="PlayButton" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MouseSens" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 336.0
 margin_right = 1880.0
-margin_bottom = 380.0
+margin_bottom = 374.0
+
+[node name="Label" type="Label" parent="VBoxContainer/MouseSens"]
+margin_right = 369.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "MouseSensitivity: 100%"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MouseSens"]
+margin_left = 373.0
+margin_right = 1880.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 100.0
+
+[node name="PlayButton" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 378.0
+margin_right = 1880.0
+margin_bottom = 422.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayButton"]
 margin_right = 887.0
