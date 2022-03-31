@@ -14,6 +14,8 @@ func _init():
 func _ready():
 	acct = load_time_from_file()
 	get_node("GUI/VBoxContainer/NTargets/HSlider").connect("value_changed", self, "_on_HSlider_value_changed")
+	get_node("GUI/VBoxContainer/PlayButton/Play").connect("pressed", self, "_on_PlayButton_pressed")
+	get_node("HUD/PauseButton/Pause").connect("pressed", self, "_on_PauseButton_pressed")
 	for _i in range(pvalue):
 		self.add_child(target.instance())
 		
@@ -96,13 +98,12 @@ func remove_target(n):
 				return
 
 func pause_targets(on):
-		for c in get_children():
-			if c.is_in_group("target"):
-				if on:
-					c.get_node("Timer").stop()
-				else:
-					c.get_node("Timer").start()
-
+	for c in get_children():
+		if c.is_in_group("target"):
+			if on:
+				c.get_node("Timer").stop()
+			else:
+				c.get_node("Timer").start()
 
 func _on_HSlider_value_changed(value):
 	if value > pvalue:
@@ -110,3 +111,9 @@ func _on_HSlider_value_changed(value):
 	else:
 		remove_target(pvalue - value)
 	pvalue = value
+
+func _on_PlayButton_pressed():
+	Globals.pause = false
+
+func _on_PauseButton_pressed():
+	Globals.pause = true
