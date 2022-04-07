@@ -1,15 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/materials/grey.tres" type="Material" id=1]
 [ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/World.gd" type="Script" id=4]
+[ext_resource path="res://src/assets/crosshair_circle.png" type="Texture" id=5]
 [ext_resource path="res://src/scenes/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/assets/crosshair_circle_white.png" type="Texture" id=7]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 18.0
 
 [node name="World" type="Spatial"]
 script = ExtResource( 4 )
@@ -35,6 +40,16 @@ visible = false
 transform = Transform( -1, 0, -8.74228e-08, -5.41301e-08, 0.785252, 0.619176, 6.86489e-08, 0.619176, -0.785252, 0, 8.71141, 0 )
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 39, 655 )
+scale = Vector2( 10, 10 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 7 )
+shape = SubResource( 3 )
+passby_press = true
+action = "fire"
+visibility_mode = 1
 
 [connection signal="fire" from="Player" to="." method="_on_Player_fire"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]

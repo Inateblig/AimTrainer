@@ -25,6 +25,9 @@ func _input(event):
 	if event is InputEventMouseMotion and !Globals.pause:
 		self.rotate_y((-event.relative.x) * mouse_sens)
 		head.rotate_x((event.relative.y) * mouse_sens)
+	if event is InputEventScreenDrag and !Globals.pause:
+		self.rotate_y((-event.relative.x) * mouse_sens)
+		head.rotate_x((event.relative.y) * mouse_sens)
 
 func _process(delta):
 	mouse_sens = 0.005 * Globals.mousesens
